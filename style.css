@@ -198,8 +198,23 @@ button {
   border: 0;
 }
 
-.accent { color: var(--clr-accent); }
+.accent,
+.hero__title-gradient,
+.section__eyebrow,
+.nav__logo span,
+.about__highlight-number,
+.hero__portrait-badge-role,
+.web-modal__lock {
+  background: linear-gradient(135deg, hsl(172, 85%, 52%), hsl(260, 65%, 68%), hsl(195, 90%, 55%), hsl(145, 80%, 50%), hsl(172, 85%, 52%));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+}
+
 .text-muted { color: var(--clr-text-muted); }
+
 
 /* ---------- Glass Card ---------- */
 .glass-card {
@@ -476,20 +491,28 @@ button {
   border-radius: var(--radius-full);
   padding: 6px 16px;
   font-size: var(--fs-xs);
-  font-weight: 600;
-  color: var(--clr-accent);
+  font-weight: 700;
   margin-bottom: var(--sp-lg);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  background: linear-gradient(135deg, hsl(172, 85%, 52%), hsl(260, 65%, 68%), hsl(195, 90%, 55%), hsl(172, 85%, 52%));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
 }
 
 .hero__badge-dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--clr-accent);
-  animation: pulse 2s ease-in-out infinite;
+  background: linear-gradient(135deg, hsl(172, 85%, 52%), hsl(260, 65%, 68%), hsl(195, 90%, 55%), hsl(172, 85%, 52%));
+  background-size: 300% 300%;
+  animation: gradient-shift 4s ease infinite, pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
 }
+
 
 .hero__title {
   font-family: var(--ff-heading);
@@ -543,16 +566,20 @@ button {
 }
 
 .btn--primary {
-  background: var(--clr-accent);
-  color: var(--clr-bg);
+  background: linear-gradient(135deg, hsl(172, 85%, 48%), hsl(220, 85%, 58%), hsl(260, 65%, 62%), hsl(172, 85%, 48%));
+  background-size: 300% 300%;
+  animation: gradient-shift 5s ease infinite;
+  color: #ffffff !important;
+  border: none;
+  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
 }
 
 .btn--primary:hover {
-  background: hsl(172, 80%, 60%);
-  box-shadow: 0 0 30px var(--clr-accent-glow-strong);
+  box-shadow: 0 8px 30px rgba(20, 184, 166, 0.55);
   transform: translateY(-2px);
-  color: var(--clr-bg);
+  color: #ffffff !important;
 }
+
 
 .btn--outline {
   background: transparent;
@@ -1182,10 +1209,13 @@ button {
 .skill-card__item-fill {
   height: 100%;
   border-radius: var(--radius-full);
-  background: linear-gradient(90deg, var(--clr-accent), var(--clr-tertiary));
+  background: linear-gradient(90deg, hsl(172, 85%, 52%), hsl(260, 65%, 68%), hsl(195, 90%, 55%), hsl(172, 85%, 52%));
+  background-size: 300% 300%;
+  animation: gradient-shift 5s ease infinite;
   transition: width 1.2s var(--ease-spring);
   width: 0;
 }
+
 
 .skill-card__item-fill.animated {
   /* width is set inline */
