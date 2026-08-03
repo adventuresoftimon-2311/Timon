@@ -657,8 +657,6 @@ button {
   transform: none !important;
 }
 
-
-
 .hero__portrait-badge-icon {
   font-size: 1.1rem;
 }
@@ -676,9 +674,7 @@ button {
   font-weight: 500;
 }
 
-.hero__portrait-wrapper:hover .hero__portrait-img {
-  transform: scale(1.03) translateY(-4px);
-}
+
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
