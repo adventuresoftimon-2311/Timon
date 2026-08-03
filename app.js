@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
       form_name: 'Name',
       form_message: 'Nachricht',
       form_submit: '📤 Nachricht senden',
-      form_success: 'Vielen Dank! Deine Nachricht wurde gesendet.',
+      form_success: 'E-Mail-Programm geöffnet! Bitte dort auf „Senden“ klicken.',
 
       // Footer
       footer_rights: 'Alle Rechte vorbehalten.',
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
       form_name: 'Name',
       form_message: 'Message',
       form_submit: '📤 Send Message',
-      form_success: 'Thank you! Your message has been sent.',
+      form_success: 'Email app opened! Please click "Send" in your mail program.',
 
       footer_rights: 'All rights reserved.',
       footer_phone: 'Phone',
@@ -479,23 +479,29 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Simulate send
-      const submitBtn = document.getElementById('formSubmit');
-      submitBtn.textContent = currentLang === 'de' ? '⏳ Sende...' : '⏳ Sending...';
-      submitBtn.disabled = true;
+      const name = document.getElementById('contactName')?.value.trim() || '';
+      const email = document.getElementById('contactEmail')?.value.trim() || '';
+      const message = document.getElementById('contactMessage')?.value.trim() || '';
 
-      setTimeout(() => {
+      const recipient = 'hoffmann.timon@icloud.com';
+      const subjectText = `Kontaktanfrage von ${name} über Portfolio-Website`;
+      const bodyText = `Hallo Timon,\n\n${message}\n\n---\nAbsender: ${name}\nE-Mail-Adresse: ${email}\nGesendet über: timon-portfolio.de`;
+
+      const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+
+      // Trigger default email app (Apple Mail, Outlook, Gmail, etc.)
+      window.location.href = mailtoUrl;
+
+      // Show success notice in website
+      if (formSuccess) {
         formSuccess.classList.add('show');
-        contactForm.reset();
-        submitBtn.textContent = translations[currentLang].form_submit;
-        submitBtn.disabled = false;
-
         setTimeout(() => {
           formSuccess.classList.remove('show');
-        }, 4000);
-      }, 1200);
+        }, 6000);
+      }
     });
   }
+
 
   // ───────────────────────────────────────────
   // 8. COUNT-UP ANIMATION FOR HIGHLIGHT NUMBERS
