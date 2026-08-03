@@ -586,6 +586,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  padding-bottom: 20px;
 }
 
 .hero__portrait-glow {
@@ -593,16 +594,16 @@ button {
   inset: -20px;
   background: radial-gradient(circle at 50% 50%, var(--clr-accent-dim) 0%, transparent 70%);
   filter: blur(40px);
-  opacity: 0.6;
+  opacity: 0.65;
   z-index: 0;
   animation: pulse 4s ease-in-out infinite alternate;
 }
 
 .hero__portrait-backdrop {
   position: absolute;
-  bottom: 0;
-  width: 85%;
-  height: 85%;
+  bottom: 20px;
+  width: 88%;
+  height: 82%;
   border-radius: var(--radius-lg);
   background: linear-gradient(180deg, var(--clr-bg-elevated) 0%, var(--clr-bg-card) 100%);
   border: 1px solid var(--clr-border-light);
@@ -628,17 +629,72 @@ button {
   max-height: 520px;
   object-fit: contain;
   filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.45));
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 96%);
+  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 96%);
   transition: transform var(--duration-base) var(--ease-smooth);
   animation: float 6s ease-in-out infinite;
 }
 
+.hero__portrait-fade {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to top, var(--clr-bg) 10%, transparent 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero__portrait-badge {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  background: hsla(225, 20%, 8%, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--clr-border-light);
+  box-shadow: var(--shadow-lg);
+  white-space: nowrap;
+  transition: transform var(--duration-fast) var(--ease-smooth);
+}
+
+.hero__portrait-wrapper:hover .hero__portrait-badge {
+  transform: translateX(-50%) translateY(-3px);
+  border-color: var(--clr-accent-dim);
+}
+
+.hero__portrait-badge-icon {
+  font-size: 1.1rem;
+}
+
+.hero__portrait-badge-name {
+  font-weight: 700;
+  font-size: var(--fs-xs);
+  color: var(--clr-text);
+  line-height: 1.2;
+}
+
+.hero__portrait-badge-role {
+  font-size: 0.72rem;
+  color: var(--clr-accent);
+  font-weight: 500;
+}
+
 .hero__portrait-wrapper:hover .hero__portrait-img {
-  transform: scale(1.03) translateY(-6px);
+  transform: scale(1.03) translateY(-4px);
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
   height: 480px;
 }
