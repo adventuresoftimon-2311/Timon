@@ -546,52 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  // ───────────────────────────────────────────
-  // 10. CURSOR TRACKING LOOK-AT ANIMATION
-  // ───────────────────────────────────────────
-  const portraitImg = document.querySelector('.hero__portrait-img');
-  const portraitWrapper = document.querySelector('.hero__portrait-wrapper');
-  const portraitBackdrop = document.querySelector('.hero__portrait-backdrop');
 
-  if (portraitImg && portraitWrapper) {
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
-
-    window.addEventListener('mousemove', (e) => {
-      const rect = portraitWrapper.getBoundingClientRect();
-      const portraitCenterX = rect.left + rect.width / 2;
-      const portraitCenterY = rect.top + rect.height * 0.35; // Focus near head height
-
-      // Relative distance normalized between -1 and 1
-      const deltaX = (e.clientX - portraitCenterX) / (window.innerWidth / 2);
-      const deltaY = (e.clientY - portraitCenterY) / (window.innerHeight / 2);
-
-      // Rotation angles (degrees)
-      targetY = Math.max(-18, Math.min(18, deltaX * 16));  // Tilt left/right (-16deg to +16deg)
-      targetX = Math.max(-12, Math.min(12, -deltaY * 12)); // Tilt up/down (-12deg to +12deg)
-    });
-
-    // Smooth lerp (linear interpolation) loop
-    function animateLookAt() {
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
-
-      const translateX = (currentY / 16) * 10;
-      const translateY = (-currentX / 12) * 6;
-
-      portraitImg.style.transform = `perspective(1000px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg) translate3d(${translateX.toFixed(2)}px, ${translateY.toFixed(2)}px, 15px)`;
-
-      if (portraitBackdrop) {
-        portraitBackdrop.style.transform = `perspective(1000px) rotateX(${(currentX * 0.4).toFixed(2)}deg) rotateY(${(currentY * 0.4).toFixed(2)}deg)`;
-      }
-
-      requestAnimationFrame(animateLookAt);
-    }
-
-    animateLookAt();
-  }
 
   // ───────────────────────────────────────────
   // 11. LIVE WEBSITE PREVIEW MODAL & GALLERY CAROUSEL

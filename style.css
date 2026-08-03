@@ -587,18 +587,10 @@ button {
   justify-content: center;
   align-items: flex-end;
   padding-bottom: 20px;
-  perspective: 1000px;
-  transform-style: preserve-3d;
 }
 
 .hero__portrait-glow {
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle at 50% 50%, var(--clr-accent-dim) 0%, transparent 70%);
-  filter: blur(40px);
-  opacity: 0.65;
-  z-index: 0;
-  animation: pulse 4s ease-in-out infinite alternate;
+  display: none !important;
 }
 
 .hero__portrait-backdrop {
@@ -609,110 +601,62 @@ button {
   border-radius: var(--radius-lg);
   background: linear-gradient(180deg, var(--clr-bg-elevated) 0%, var(--clr-bg-card) 100%);
   border: 1px solid var(--clr-border-light);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-md);
   z-index: 1;
-  overflow: hidden;
-  pointer-events: none;
 }
 
-.hero__portrait-backdrop::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--clr-accent), transparent);
-  z-index: 2;
-}
-
-/* Moving Glass Reflection Sheen — STRICTLY BEHIND PHOTO */
+.hero__portrait-backdrop::before,
 .hero__portrait-backdrop::after {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 300%;
-  height: 300%;
-  background: linear-gradient(
-    115deg,
-    transparent 0%,
-    transparent 40%,
-    rgba(34, 197, 94, 0.08) 45%,
-    rgba(255, 255, 255, 0.22) 50%,
-    rgba(34, 197, 94, 0.08) 55%,
-    transparent 60%,
-    transparent 100%
-  );
-  transform: rotate(15deg);
-  animation: reflectionSweep 7s infinite ease-in-out;
-  pointer-events: none;
-  z-index: 3;
+  display: none !important;
 }
 
-@keyframes reflectionSweep {
-  0% {
-    transform: translateY(-50%) rotate(15deg);
-  }
-  30% {
-    transform: translateY(50%) rotate(15deg);
-  }
-  100% {
-    transform: translateY(50%) rotate(15deg);
-  }
-}
-
-/* Photo of Timon — STRICTLY IN FRONT OF BACKDROP & REFLECTION (z-index: 10) */
+/* Photo of Timon — STRICTLY WITHOUT ANY EFFECTS OR MASKS, IN FRONT OF BACKDROP */
 .hero__portrait-img {
   position: relative;
   z-index: 10;
   width: 100%;
   max-height: 520px;
   object-fit: contain;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.45));
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 96%);
-  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 96%);
-  transform-style: preserve-3d;
-  will-change: transform;
+  filter: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  transform: none !important;
 }
 
-/* Soft bottom edge fade */
 .hero__portrait-fade {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  height: 90px;
-  background: linear-gradient(to top, var(--clr-bg) 10%, transparent 100%);
-  z-index: 20;
-  pointer-events: none;
+  display: none !important;
 }
 
-/* Badge "Timon Hoffmann / Bremen, Deutschland" — STRICTLY IN FRONT OF PHOTO (z-index: 30) */
+/* Badge "Timon Hoffmann / Bremen, Deutschland" — COMPLETELY IN FRONT OF PHOTO (z-index: 100) */
 .hero__portrait-badge {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translate3d(-50%, 0, 40px);
-  z-index: 30;
+  transform: translateX(-50%);
+  z-index: 100;
   display: flex;
   align-items: center;
   gap: var(--sp-sm);
   padding: 8px 18px;
   border-radius: var(--radius-full);
-  background: hsla(225, 20%, 8%, 0.88);
+  background: hsla(225, 20%, 8%, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--clr-border-light);
-  box-shadow: var(--shadow-lg), 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-lg), 0 10px 25px rgba(0, 0, 0, 0.6);
   white-space: nowrap;
   transition: transform var(--duration-fast) var(--ease-smooth);
 }
 
 .hero__portrait-wrapper:hover .hero__portrait-badge {
-  transform: translate3d(-50%, -4px, 45px);
+  transform: translateX(-50%) translateY(-3px);
   border-color: var(--clr-accent-dim);
 }
+
+.hero__portrait-wrapper:hover .hero__portrait-img {
+  transform: none !important;
+}
+
 
 
 .hero__portrait-badge-icon {
