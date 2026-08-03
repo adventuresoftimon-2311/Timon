@@ -395,15 +395,28 @@
         <p class="freelance__text" data-i18n="freelance_text">
           Seit 2024 nebenberuflich selbstständig in Webdesign, SEA und Social Media Management. Eigene Kunden betreue ich als einziger Ansprechpartner von der Anforderungsaufnahme über Konzept und Umsetzung bis zur Optimierung. Mehrere conversionoptimierte Websites und Landingpages für deutsche Unternehmen verschiedener Branchen.
         </p>
-        <div class="freelance__tags">
+        <div class="freelance__tags" style="margin-bottom: var(--sp-lg);">
           <span class="timeline__tag">Webdesign</span>
           <span class="timeline__tag">SEA</span>
           <span class="timeline__tag">Social Media Management</span>
           <span class="timeline__tag">Landingpages</span>
         </div>
+
+        <!-- Featured Project Highlight: Özdemir Projektberatung -->
+        <div style="padding-top: var(--sp-lg); border-top: 1px solid var(--clr-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-md);">
+          <div>
+            <div style="font-size: var(--fs-xs); font-weight: 700; color: var(--clr-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;">Referenz-Projekt</div>
+            <h3 style="font-family: var(--ff-heading); font-size: var(--fs-lg); font-weight: 700;">Özdemir Projektberatung</h3>
+            <p style="font-size: var(--fs-xs); color: var(--clr-text-muted); margin: 0;">Unternehmenswebsite · Webdesign & Markenauftritt</p>
+          </div>
+          <button class="btn btn--primary open-live-modal" data-preview-url="https://www.özdemir-projektberatung.de" style="font-size: var(--fs-xs); padding: 10px 20px;">
+            🌐 Live-Website im Fenster scrollen
+          </button>
+        </div>
       </div>
     </div>
   </section>
+
 
   <!-- ============ EDUCATION ============ -->
   <section class="section" id="education">
@@ -788,26 +801,30 @@
           </div>
         </div>
 
-        <!-- Project 8 — Freelance -->
+        <!-- Project 8 — Freelance & Özdemir Projektberatung -->
         <div class="project-card glass-card animate-on-scroll" id="project-freelance" data-url="projects/freelance.html">
           <div class="project-card__image">
-            <div style="width:100%;height:100%;background:linear-gradient(135deg, hsl(280,60%,25%), hsl(225,20%,15%));display:flex;align-items:center;justify-content:center;font-size:3rem;">🚀</div>
+            <div style="width:100%;height:100%;background:linear-gradient(135deg, hsl(280,60%,25%), hsl(225,20%,15%));display:flex;align-items:center;justify-content:center;font-size:3rem;">🏢</div>
             <div class="project-card__overlay">
-              <span class="project-card__overlay-text" data-i18n="project_view">Details & Assets ansehen →</span>
+              <span class="project-card__overlay-text" data-i18n="project_view">Details & Referenzen →</span>
             </div>
           </div>
           <div class="project-card__body">
-            <div class="project-card__category">Nebenberuflich</div>
-            <h3 class="project-card__title">Selbstständigkeit — Webdesign & SEA</h3>
-            <p class="project-card__description">End-to-End Betreuung eigener Kunden: Webdesign, Landingpages, SEA und Social Media Management.</p>
-            <div class="project-card__techs">
+            <div class="project-card__category">Webdesign & Branding</div>
+            <h3 class="project-card__title">Özdemir Projektberatung & Freelance</h3>
+            <p class="project-card__description">Referenzprojekt: Moderne, responsive Unternehmenswebsite für Özdemir Projektberatung. Interaktiver Live-Einblick direkt auf dieser Seite.</p>
+            <div class="project-card__techs" style="margin-bottom: var(--sp-sm);">
               <span class="project-card__tech">Webdesign</span>
-              <span class="project-card__tech">SEA</span>
-              <span class="project-card__tech">CRO</span>
+              <span class="project-card__tech">Branding</span>
+              <span class="project-card__tech">SEO</span>
               <span class="project-card__tech">Landingpages</span>
             </div>
+            <button class="btn btn--outline open-live-modal" data-preview-url="https://www.özdemir-projektberatung.de" style="font-size: 0.78rem; padding: 6px 14px; width: 100%; justify-content: center; margin-top: 6px;">
+              🌐 Live-Website im Fenster öffnen
+            </button>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -892,6 +909,33 @@
       </div>
     </div>
   </footer>
+
+  <!-- ============ LIVE WEBSITE PREVIEW MODAL ============ -->
+  <div class="web-modal" id="webModal" aria-hidden="true">
+    <div class="web-modal__backdrop" id="webModalBackdrop"></div>
+    <div class="web-modal__window glass-card">
+      <div class="web-modal__header">
+        <div class="web-modal__controls">
+          <span class="web-modal__dot web-modal__dot--close" id="webModalCloseBtn" title="Schließen"></span>
+          <span class="web-modal__dot web-modal__dot--min"></span>
+          <span class="web-modal__dot web-modal__dot--max"></span>
+        </div>
+        <div class="web-modal__address-bar">
+          <span class="web-modal__lock">🔒</span>
+          <span class="web-modal__url" id="webModalUrl">https://www.özdemir-projektberatung.de</span>
+        </div>
+        <div class="web-modal__actions">
+          <a href="https://www.özdemir-projektberatung.de" target="_blank" rel="noopener" class="web-modal__action-btn" id="webModalExternal" title="In neuem Tab öffnen">
+            ↗ Tab
+          </a>
+          <button class="web-modal__close-x" id="webModalCloseX" title="Schließen">✕</button>
+        </div>
+      </div>
+      <div class="web-modal__body">
+        <iframe src="" class="web-modal__iframe" id="webModalIframe" title="Live Website Vorschau" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

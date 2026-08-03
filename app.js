@@ -593,4 +593,53 @@ document.addEventListener('DOMContentLoaded', () => {
     animateLookAt();
   }
 
+  // ───────────────────────────────────────────
+  // 11. LIVE WEBSITE PREVIEW MODAL
+  // ───────────────────────────────────────────
+  const webModal = document.getElementById('webModal');
+  const webModalBackdrop = document.getElementById('webModalBackdrop');
+  const webModalIframe = document.getElementById('webModalIframe');
+  const webModalUrl = document.getElementById('webModalUrl');
+  const webModalExternal = document.getElementById('webModalExternal');
+  const webModalCloseBtn = document.getElementById('webModalCloseBtn');
+  const webModalCloseX = document.getElementById('webModalCloseX');
+
+  function openWebModal(url) {
+    if (!webModal) return;
+    webModalIframe.src = url;
+    webModalUrl.textContent = url;
+    if (webModalExternal) webModalExternal.href = url;
+    webModal.classList.add('active');
+    webModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeWebModal() {
+    if (!webModal) return;
+    webModal.classList.remove('active');
+    webModal.setAttribute('aria-hidden', 'true');
+    webModalIframe.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-preview-url]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const url = btn.getAttribute('data-preview-url');
+      if (url) openWebModal(url);
+    });
+  });
+
+  if (webModalBackdrop) webModalBackdrop.addEventListener('click', closeWebModal);
+  if (webModalCloseBtn) webModalCloseBtn.addEventListener('click', closeWebModal);
+  if (webModalCloseX) webModalCloseX.addEventListener('click', closeWebModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && webModal && webModal.classList.contains('active')) {
+      closeWebModal();
+    }
+  });
+
 });
+
