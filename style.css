@@ -587,6 +587,8 @@ button {
   justify-content: center;
   align-items: flex-end;
   padding-bottom: 20px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .hero__portrait-glow {
@@ -631,8 +633,8 @@ button {
   filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.45));
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 96%);
   mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 96%);
-  transition: transform var(--duration-base) var(--ease-smooth);
-  animation: float 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .hero__portrait-fade {
