@@ -594,8 +594,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ───────────────────────────────────────────
-  // 11. LIVE WEBSITE PREVIEW MODAL
+  // 11. LIVE WEBSITE PREVIEW MODAL & GALLERY CAROUSEL
   // ───────────────────────────────────────────
+  const liveProjects = [
+    { url: 'https://www.auftragshero-mv.de', name: 'AuftragsHero MV' },
+    { url: 'https://www.özdemir-projektberatung.de', name: 'Özdemir Projektberatung' },
+    { url: 'https://www.fussboeden-gaebel.de/', name: 'Fussböden Gäbel' },
+    { url: 'https://www.as-garten-gebäudeservice.com/', name: 'AS Garten- & Gebäudeservice' },
+    { url: 'https://krumme.vercel.app/', name: 'Krumme Web App' },
+    { url: 'https://nick-website-indol.vercel.app/', name: 'Nick Web App' }
+  ];
+
+  let currentProjectIndex = 0;
+
   const webModal = document.getElementById('webModal');
   const webModalBackdrop = document.getElementById('webModalBackdrop');
   const webModalIframe = document.getElementById('webModalIframe');
@@ -603,12 +614,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const webModalExternal = document.getElementById('webModalExternal');
   const webModalCloseBtn = document.getElementById('webModalCloseBtn');
   const webModalCloseX = document.getElementById('webModalCloseX');
+  const webModalPrev = document.getElementById('webModalPrev');
+  const webModalNext = document.getElementById('webModalNext');
+  const webModalCounter = document.getElementById('webModalCounter');
+
+  function updateModalProject(index) {
+    if (index < 0) index = liveProjects.length - 1;
+    if (index >= liveProjects.length) index = 0;
+    currentProjectIndex = index;
+
+    const proj = liveProjects[currentProjectIndex];
+    if (webModalIframe) webModalIframe.src = proj.url;
+    if (webModalUrl) webModalUrl.textContent = proj.url;
+    if (webModalExternal) webModalExternal.href = proj.url;
+    if (webModalCounter) webModalCounter.textContent = `${currentProjectIndex + 1} / ${liveProjects.length}`;
+  }
 
   function openWebModal(url) {
     if (!webModal) return;
-    webModalIframe.src = url;
-    webModalUrl.textContent = url;
-    if (webModalExternal) webModalExternal.href = url;
+    const foundIndex = liveProjects.findIndex(p => p.url === url || url.includes(p.url.replace('https://', '').replace('http://', '').replace('/', '')));
+    if (foundIndex !== -1) {
+      currentProjectIndex = foundIndex;
+    } else {
+      // Add custom URL dynamically if not in preset list
+      const existing = liveProjects.find(p => p.url === url);
+      if (!existing) {
+        liveProjects.push({ url: url, name: url });
+        currentProjectIndex = liveProjects.length - 1;
+      }
+    }
+
+    updateModalProject(currentProjectIndex);
     webModal.classList.add('active');
     webModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -631,15 +667,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  if (webModalPrev) webModalPrev.addEventListener('click', () => updateModalProject(currentProjectIndex - 1));
+  if (webModalNext) webModalNext.addEventListener('click', () => updateModalProject(currentProjectIndex + 1));
   if (webModalBackdrop) webModalBackdrop.addEventListener('click', closeWebModal);
   if (webModalCloseBtn) webModalCloseBtn.addEventListener('click', closeWebModal);
   if (webModalCloseX) webModalCloseX.addEventListener('click', closeWebModal);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && webModal && webModal.classList.contains('active')) {
-      closeWebModal();
+    if (webModal && webModal.classList.contains('active')) {
+      if (e.key === 'Escape') closeWebModal();
+      if (e.key === 'ArrowLeft') updateModalProject(currentProjectIndex - 1);
+      if (e.key === 'ArrowRight') updateModalProject(currentProjectIndex + 1);
     }
   });
 
 });
+
 
