@@ -601,8 +601,9 @@ document.addEventListener('DOMContentLoaded', () => {
     { url: 'https://www.özdemir-projektberatung.de', name: 'Özdemir Projektberatung' },
     { url: 'https://www.fussboeden-gaebel.de/', name: 'Fussböden Gäbel' },
     { url: 'https://www.as-garten-gebäudeservice.com/', name: 'AS Garten- & Gebäudeservice' },
-    { url: 'https://krumme.vercel.app/', name: 'Krumme Web App' },
-    { url: 'https://nick-website-indol.vercel.app/', name: 'Nick Web App' }
+    { url: 'https://krumme.vercel.app/', name: 'Krumme Klänge Landing page' },
+    { url: 'https://nick-website-indol.vercel.app/', name: 'Deep Praxis' }
+
   ];
 
   let currentProjectIndex = 0;
