@@ -570,14 +570,76 @@ button {
   font-size: 1.1em;
 }
 
-/* Hero Visual */
+/* Hero Visual & Portrait Image */
 .hero__visual {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation: fadeIn var(--duration-slow) var(--ease-spring) 0.3s both;
 }
 
-.hero__card-stack {
+.hero__portrait-wrapper {
   position: relative;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hero__portrait-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle at 50% 50%, var(--clr-accent-dim) 0%, transparent 70%);
+  filter: blur(40px);
+  opacity: 0.6;
+  z-index: 0;
+  animation: pulse 4s ease-in-out infinite alternate;
+}
+
+.hero__portrait-backdrop {
+  position: absolute;
+  bottom: 0;
+  width: 85%;
+  height: 85%;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--clr-bg-elevated) 0%, var(--clr-bg-card) 100%);
+  border: 1px solid var(--clr-border-light);
+  box-shadow: var(--shadow-glow);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero__portrait-backdrop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--clr-accent), transparent);
+}
+
+.hero__portrait-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.45));
+  transition: transform var(--duration-base) var(--ease-smooth);
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero__portrait-wrapper:hover .hero__portrait-img {
+  transform: scale(1.03) translateY(-6px);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
   height: 480px;
 }
 
@@ -1914,7 +1976,12 @@ button {
   }
 
   .hero__visual {
-    display: none;
+    display: flex;
+    margin-top: var(--sp-xl);
+  }
+
+  .hero__portrait-wrapper {
+    max-width: 320px;
   }
 
   .about__grid {
