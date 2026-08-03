@@ -544,6 +544,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    });
+  });
   // ───────────────────────────────────────────
   // 10. CURSOR TRACKING LOOK-AT ANIMATION
   // ───────────────────────────────────────────
