@@ -2203,6 +2203,205 @@ button {
   height: 100%;
   border: none;
 }
+/* ---------- Freelance References ---------- */
+.freelance__references-wrapper {
+  padding-top: var(--sp-xl);
+  border-top: 1px solid var(--clr-border);
+}
+
+.freelance__references-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-lg);
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+}
+
+.freelance__references-title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--clr-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.freelance__references-hint {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+}
+
+.freelance__ref-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.freelance__ref-item {
+  padding: var(--sp-md);
+  background: var(--clr-bg-elevated);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.freelance__ref-info h4 {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.freelance__ref-info p {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin: 0;
+}
+
+.freelance__ref-btn {
+  font-size: var(--fs-xs);
+  padding: 8px 16px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ---------- AuftragsHero MV Section ---------- */
+.auftragshero__title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.auftragshero__logo-head {
+  height: 42px;
+  width: auto;
+  filter: drop-shadow(0 4px 12px rgba(37,99,235,0.4));
+}
+
+.auftragshero__card {
+  padding: var(--sp-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.auftragshero__glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.auftragshero__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--sp-2xl);
+  align-items: center;
+}
+
+.auftragshero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(37,99,235,0.15);
+  border: 1px solid rgba(37,99,235,0.3);
+  border-radius: var(--radius-full);
+  padding: 4px 14px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: #3b82f6;
+  margin-bottom: var(--sp-md);
+}
+
+.auftragshero__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3b82f6;
+  display: inline-block;
+}
+
+.auftragshero__headline {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  margin-bottom: var(--sp-md);
+  line-height: 1.2;
+}
+
+.auftragshero__desc {
+  font-size: var(--fs-md);
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--sp-lg);
+}
+
+.auftragshero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-xl);
+}
+
+.auftragshero__actions {
+  display: flex;
+  gap: var(--sp-md);
+  flex-wrap: wrap;
+}
+
+.auftragshero__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auftragshero__box {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, hsl(217, 80%, 20%), hsl(225, 20%, 10%));
+  border: 1px solid var(--clr-border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-xl);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.auftragshero__box-logo {
+  height: 75px;
+  margin-bottom: var(--sp-md);
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.5));
+}
+
+.auftragshero__box-title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-lg);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.auftragshero__box-sub {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .hero__grid {
@@ -2221,11 +2420,12 @@ button {
 
   .hero__visual {
     display: flex;
+    justify-content: center;
     margin-top: var(--sp-xl);
   }
 
   .hero__portrait-wrapper {
-    max-width: 320px;
+    max-width: 340px;
   }
 
   .about__grid {
@@ -2259,13 +2459,30 @@ button {
   .contact__grid {
     grid-template-columns: 1fr;
   }
+
+  .auftragshero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-xl);
+  }
+
+  .auftragshero__card {
+    padding: var(--sp-xl);
+  }
 }
 
 @media (max-width: 768px) {
   :root {
-    --fs-hero: 2.4rem;
-    --fs-2xl: 2rem;
-    --fs-xl: 1.5rem;
+    --fs-hero: 2.2rem;
+    --fs-2xl: 1.85rem;
+    --fs-xl: 1.35rem;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  .hero__title-line {
+    white-space: normal;
   }
 
   .nav__links {
@@ -2275,11 +2492,15 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--clr-bg);
+    background: hsla(225, 22%, 7%, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: var(--sp-xl);
+    gap: var(--sp-lg);
+    padding: 85px 24px 40px;
+    overflow-y: auto;
     z-index: 100;
   }
 
@@ -2288,7 +2509,8 @@ button {
   }
 
   .nav__link {
-    font-size: var(--fs-xl);
+    font-size: 1.25rem;
+    padding: 6px 0;
   }
 
   .nav__hamburger {
@@ -2308,21 +2530,50 @@ button {
   }
 
   .timeline__item {
-    padding-left: 60px;
+    padding-left: 42px;
   }
 
   .timeline__line {
-    left: 22px;
+    left: 15px;
   }
 
   .timeline__dot {
-    left: 12px;
+    left: 6px;
     width: 18px;
     height: 18px;
   }
 
   .section {
     padding: var(--sp-2xl) 0;
+  }
+
+  .freelance__ref-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .freelance__ref-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .web-modal__window {
+    height: 92vh;
+  }
+
+  .web-modal__controls {
+    display: none;
+  }
+
+  .web-modal__address-bar {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+
+  .web-modal__action-btn {
+    display: none;
   }
 }
 
@@ -2332,6 +2583,40 @@ button {
   }
 
   .hero {
-    min-height: 90vh;
+    min-height: auto;
+    padding-top: 100px;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__portrait-wrapper {
+    max-width: 290px;
+  }
+
+  .hero__portrait-badge {
+    max-width: 92%;
+    font-size: 0.76rem;
+    padding: 6px 12px;
+  }
+
+  .auftragshero__card {
+    padding: var(--sp-lg);
+  }
+
+  .auftragshero__headline {
+    font-size: 1.25rem;
+  }
+
+  .auftragshero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .auftragshero__actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
+
